@@ -42,9 +42,11 @@ namespace ToDoAPI
             //register the configuration 
             services.AddCouchbase(cbConf);
             services.AddHttpClient();
-            
+
+            // configure custom services
+            services.AddTransient<CouchDatabaseInintService>();
             services.AddSingleton<ITokenHandler, TokenHandler>();
-       
+
 
 
             services.AddControllers();
@@ -59,13 +61,23 @@ namespace ToDoAPI
                 app.UseCustomSwagger();
             }
 
-           
+            if (env.EnvironmentName == "Testing")
+            {
+                
+                //setup the database once everything is setup and running integration tests need to make sure database is fully working before running,hence running Synchronously
+                appLifetime.ApplicationStarted.Register(() => {
+                    var db = app.ApplicationServices.GetService<CouchDatabaseInintService>();
+                    db.SetupDatabase().RunSynchronously();
+                });
+            }
+            else
+            {
                 //setup the database once everything is setup and running
                 appLifetime.ApplicationStarted.Register(async () => {
                     var db = app.ApplicationServices.GetService<CouchDatabaseInintService>();
                     await db.SetupDatabase();
                 });
-            
+            }
 
             //remove couchbase from memory when ASP.NET closes
             appLifetime.ApplicationStopped.Register(() => {
