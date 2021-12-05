@@ -46,6 +46,7 @@ namespace ToDoAPI
             // configure custom services
             services.AddTransient<CouchDatabaseInintService>();
             services.AddScoped<ICouchbaseService, CouchbaseService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddSingleton<ITokenHandler, TokenHandler>();
 
 
