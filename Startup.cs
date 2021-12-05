@@ -48,7 +48,7 @@ namespace ToDoAPI
             services.AddScoped<ICouchbaseService, CouchbaseService>();
             services.AddScoped<IUserService, UserService>();
             services.AddSingleton<ITokenHandler, TokenHandler>();
-
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 
             services.AddControllers();
