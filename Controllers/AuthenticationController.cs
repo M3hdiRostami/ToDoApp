@@ -39,7 +39,7 @@ namespace ToDoAPI.Controllers
 
             if (response.Success)
             {
-                return Ok(response.Extra);
+                return Ok(response.Data);
             }
             else
             {
@@ -57,7 +57,7 @@ namespace ToDoAPI.Controllers
 
             if (response.Success)
             {
-                return Ok(response.Extra);
+                return Ok(response.Data);
             }
             else
             {

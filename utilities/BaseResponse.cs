@@ -8,22 +8,28 @@ namespace ToDoAPI.Uilities.Responses
     public class BaseResponse<T> where T:class
 
     {
-        public T Extra { get; set; }
+        public T Data { get; set; }
 
 
         public bool Success { get; set; }
         public string Message { get; set; }
 
 
-        public BaseResponse(T extra=null)
+        public BaseResponse(T data=null)
         {
-            this.Extra = extra;
-            this.Success = (extra==null) ?  false:true;
+            Data = data;
+            Success = (data==null) ?  false:true;
         }
         public BaseResponse(string message)
         {
-            this.Success = false;
-            this.Message = message;
+            Success = false;
+            Message = message;
+        }
+        public BaseResponse(string message,T data,bool suceess)
+        {
+            data = data;
+            Success = suceess;
+            Message = message;
         }
 
 
