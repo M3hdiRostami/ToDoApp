@@ -1,5 +1,4 @@
 ﻿using System;
-using ToDoAPI.Services;
 
 namespace ToDoAPI.Models
 {
@@ -15,8 +14,8 @@ namespace ToDoAPI.Models
         {
             return new User
             {
-		        ID = Guid.NewGuid(),
-                Username=UserName,
+                ID = Guid.NewGuid(),
+                Username = UserName,
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Email = this.Email,

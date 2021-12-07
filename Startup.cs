@@ -69,7 +69,7 @@ namespace ToDoAPI
                 //setup the database once everything is setup and running integration tests need to make sure database is fully working before running,hence running Synchronously
                 appLifetime.ApplicationStarted.Register(() => {
                     var db = app.ApplicationServices.GetService<CouchDatabaseInintService>();
-                    db.SetupDatabase().RunSynchronously();
+                    db.SetupDatabase().Wait();
                 });
             }
             else

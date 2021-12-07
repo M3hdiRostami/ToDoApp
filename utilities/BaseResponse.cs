@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +11,10 @@ namespace ToDoAPI.Uilities.Responses
     {
         public T Data { get; set; }
 
-
         public bool Success { get; set; }
         public string Message { get; set; }
 
-
+        [JsonConstructor]
         public BaseResponse(T data=null)
         {
             Data = data;
@@ -25,9 +25,10 @@ namespace ToDoAPI.Uilities.Responses
             Success = false;
             Message = message;
         }
+
         public BaseResponse(string message,T data,bool suceess)
         {
-            data = data;
+            Data = data;
             Success = suceess;
             Message = message;
         }

@@ -9,8 +9,8 @@ namespace ToDoAPI.Extensions
     {
         public static User GetUserInfoFromClaims(this ClaimsPrincipal AppUser) => new User
         {
-            Username = AppUser.FindFirstValue(nameof(User.Username)) ?? "unAuthorized user",
-            ID = Guid.Parse(AppUser.FindFirstValue(nameof(User.ID)))
+            Username = AppUser.FindFirstValue(nameof(User.Username)) ?? "UnAuthorized user",
+            ID = Guid.Parse(AppUser.FindFirstValue(nameof(User.ID)) ?? Guid.Empty.ToString())
 
         };
 

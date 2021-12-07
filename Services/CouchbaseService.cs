@@ -9,12 +9,6 @@ using ToDoAPI.Uilities.config;
 
 namespace ToDoAPI.Services
 {
-    public interface ICouchbaseService
-    {
-
-        public Task<ICouchbaseCollection> GetScopeCollection(string collectionName,string ScopeName="");
-        public Task<ICluster> GetClusterAsync();
-    }
 
 
     public class CouchbaseService : ICouchbaseService
