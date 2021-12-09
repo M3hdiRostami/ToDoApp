@@ -19,7 +19,11 @@ namespace ToDoAPI.Controllers
            
         }
 
-
+        /// <summary>
+        /// Get user ToDoList by ID ,or leave it blank to get all of theme
+        /// </summary>
+        /// <param name="taskId">Guid</param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> GetUserToDoList(Guid taskId = default)
         {
@@ -34,6 +38,12 @@ namespace ToDoAPI.Controllers
             }
 
         }
+        /// <summary>
+        /// Get user ToDoList within specified dates
+        /// </summary>
+        /// <param name="dueTimefrom">DateTime Sample 2021-12-09T13:14:39.513Z</param>
+        /// <param name="dueTimeto">Date Sample 2021-12-09</param>
+        /// <returns></returns>
         [HttpGet("{dueTimefrom}/{dueTimeto}")]
         public async Task<ActionResult> GetUserToDoList(DateTime dueTimefrom, DateTime dueTimeto)
         {
@@ -49,6 +59,11 @@ namespace ToDoAPI.Controllers
             }
 
         }
+        /// <summary>
+        /// Update user ToDoList
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> UpdateToDo(ToDoTask task)
         {
@@ -64,6 +79,11 @@ namespace ToDoAPI.Controllers
             }
 
         }
+        /// <summary>
+        /// Delete user ToDoList by ID
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <returns></returns>
         [HttpDelete("{taskId}")]
         public async Task<ActionResult> DeleteToDo(Guid taskId)
         {
@@ -79,6 +99,12 @@ namespace ToDoAPI.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Add new ToDo items 
+        /// </summary>
+        /// <param name="tasks"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<ActionResult> AddToDo(ICollection<ToDoTask> tasks)
         {
