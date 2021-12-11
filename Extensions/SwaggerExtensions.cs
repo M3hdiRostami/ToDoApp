@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
 
 namespace ToDoAPI.Extensions
 {
@@ -12,7 +13,7 @@ namespace ToDoAPI.Extensions
             
             services.AddSwaggerGen(c =>
             {
-                c.IncludeXmlComments(string.Format(@"{0}\API.xml", AppDomain.CurrentDomain.BaseDirectory));
+                c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "API.xml"));
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = AppDomain.CurrentDomain.FriendlyName, Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {

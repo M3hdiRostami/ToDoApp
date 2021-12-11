@@ -1,0 +1,17 @@
+﻿version: "3.9"
+services:
+  web:
+    container_name: "todoapp_web" 
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+    - .:/project
+    depends_on:
+      - "couchbase"
+  couchbase:
+    image: "couchbase:community-7.0.2"
+    ports:
+      - "8091-8094:8091-8094" 
+      - "11210:11210"

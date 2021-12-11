@@ -37,7 +37,7 @@ namespace ToDoAPI.Services
         {
             ICluster cluster = null ;
             IBucket bucket;
-
+            
             //try to create bucket, if exists will just fail which is fine
             try
             {
@@ -62,6 +62,15 @@ namespace ToDoAPI.Services
             catch (BucketExistsException)
             {
                 _logger.LogWarning($"Bucket {_couchbaseConfig.BucketName} already exists");
+            }
+            catch(AuthenticationFailureException)
+            {
+                _logger.LogError($"Declared Credential for couchbase server is not configured or is invalid!");
+            }
+            catch (System.NullReferenceException)
+            {
+                _logger.LogError($"Can't access to Database server items,check if connection string is correct,declared user has FullAdmin role,cluster initial configuration is ok");
+               
             }
 
             bucket = await _bucketProvider.GetBucketAsync(_couchbaseConfig.BucketName);
