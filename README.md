@@ -7,7 +7,9 @@ To run prebuilt project, you will need:
 
 - Couchbase 7 Installed 
 - [.NET SDK v5+](https://dotnet.microsoft.com/download/dotnet/5.0) installed 
+
 **OR:**
+
 - Docker Installed
 - WSL linux sub system Installed (for other os users)
 
@@ -30,7 +32,7 @@ dotnet build ToDo.sln
 
 ```sh
 cd ./ToDoApp
- docker-compose build
+docker-compose build
 ```
 
 ### Database Server Configuration
@@ -43,7 +45,7 @@ if you will run app on local machine directly (with out containers) you should u
  "RestEndpoint": "http://127.0.0.1:8091/"
 }
  ```
-> **Note: **make sure that "devuser" user role is Full Admin for executing db init Service succesfully
+> Note: make sure that "devuser" user role is Full Admin for executing db init Service succesfully
 
 
 
@@ -55,14 +57,14 @@ if you will run app on local machine directly (with out containers) you should u
 
 ```sh
 cd ./ToDoApp
- dotnet run ToDoAPI.csproj
+dotnet run ToDoAPI.csproj
 ```
 
 #### on Docker containers
 
 ```sh
 cd ./ToDoApp
- docker-compose up
+docker-compose up
 ```
 
 -  In first step hit to http://127.0.0.1:8091 to do initial settings and creating username:password:role as devuser:658965895:FullAdmin 
