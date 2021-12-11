@@ -37,7 +37,7 @@ docker-compose build
 
 ### Database Server Configuration
 
-All configuration for communication with the database is stored in the appsettings.Development.json and  appsettings.testing.json file.  This includes the connection string, username, password, bucket name, colleciton name, and scope name.
+All configuration for communication with the database is stored in the appsettings.json and  appsettings.testing.json file.  This includes the connection string, username, password, bucket name, colleciton name, and scope name.
 if you will run app on local machine directly (with out containers) you should update "Couchbase" section parameters in appsettings files as below :
 ```sh
 {
